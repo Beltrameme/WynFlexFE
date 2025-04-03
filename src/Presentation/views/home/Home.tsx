@@ -10,7 +10,7 @@ interface Props extends StackScreenProps<RootStackParamList, 'HomeScreen'>{};
 
 export const HomeScreen = ({navigation, route}: Props) => {
     return(
-    <View >
+    <View style={{top:60}}>
         <Text >HOME</Text>
 
         <TouchableOpacity onPress={ () => navigation.navigate('RegisterScreen') }>
@@ -21,8 +21,6 @@ export const HomeScreen = ({navigation, route}: Props) => {
     
 }
 
-    
-// HOT RELOAD
 
 
     

@@ -2,6 +2,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React from 'react'
 import { HomeScreen } from '../views/home/Home';
 import { RegisterScreen } from '../views/register/Register';
+import { UserProvider } from '../context/UserContext';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -12,6 +13,7 @@ export type RootStackParamList = {
 
 export const MainStackNavigator = () => {
   return (
+    <UserState>
     <Stack.Navigator screenOptions={{headerShown: false}}>
         <Stack.Screen
           name="HomeScreen"
@@ -26,5 +28,14 @@ export const MainStackNavigator = () => {
          }} 
          />
     </Stack.Navigator>
+    </UserState>
+  )
+}
+
+const UserState = ({children}: any) => {
+  return(
+    <UserProvider>
+      { children }
+    </UserProvider>
   )
 }
