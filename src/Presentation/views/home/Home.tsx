@@ -12,13 +12,31 @@ interface Props extends StackScreenProps<RootStackParamList, 'HomeScreen'>{};
 
 export const HomeScreen = ({navigation, route}: Props) => {
 
-    const { email, password, errorMessage, onChange, login, user } = useViewModel();
+    const { email, password, errorMessage, onChange, login, user, removeUserSession } = useViewModel();
 
     useEffect(() => {
         if (errorMessage !== '') {
             ToastAndroid.show(errorMessage, ToastAndroid.LONG);
         }
     }, [errorMessage])
+
+    useEffect(() => {      
+        if (user?.id !== null && user?.id !== undefined && user?.id !== '') {
+            
+            if(user.rol === 'CLIENTE'){
+                navigation.replace('ClientScreen')
+            }
+            else if(user.rol === 'DRIVER'){
+                navigation.replace('DriverScreen')
+            }
+            else if(user.rol === 'ADMIN'){
+                navigation.replace('AdminScreen')
+            }
+            else{
+                navigation.replace('ErrorScreen')
+            }
+        }
+    }, [user])
 
     return(
     <View style={{top:60}}>
@@ -45,6 +63,12 @@ export const HomeScreen = ({navigation, route}: Props) => {
         <TouchableOpacity onPress={ () => navigation.navigate('RegisterScreen') }>
             <Text>Registrate</Text>
         </TouchableOpacity>
+
+        <View style={{top:100}}>
+            <TouchableOpacity onPress={ () =>  removeUserSession()}>
+                <Text>remover sesion</Text>
+            </TouchableOpacity>
+        </View>
     </View>
     )
     

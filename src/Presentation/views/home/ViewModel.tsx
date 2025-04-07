@@ -8,7 +8,7 @@ const HomeViewModel = () => {
         email: '',
         password: '',
     });
-    const {user, saveUserSession} = useContext(UserContext)
+    const {user, saveUserSession, removeUserSession} = useContext(UserContext)
     console.log('USUARIO DE SESION: ' + JSON.stringify(user));
     
 
@@ -47,7 +47,8 @@ const HomeViewModel = () => {
         user,
         onChange,
         login,
-        errorMessage
+        errorMessage,
+        removeUserSession
     }
 }
 
