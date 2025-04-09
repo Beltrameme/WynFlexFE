@@ -1,10 +1,20 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Text, TouchableOpacity, View } from 'react-native'
 import { useUserLocal } from '../../hooks/useUserLocal';
 import useViewModel from './ViewModel';
+import { StackScreenProps } from '@react-navigation/stack';
+import { RootStackParamList } from '../../navigator/MainStackNavigator';
 
-export const AdminScreen = () => {
-  const { removeUserSession } = useViewModel();
+interface Props extends StackScreenProps<RootStackParamList, 'AdminScreen'>{};
+
+export const AdminScreen = ({navigation, route}: Props) => {
+  const { user, removeUserSession } = useViewModel();
+  useEffect(() => {
+    if(user?.rol !== 'ADMIN'){
+      navigation.replace('HomeScreen')
+    }
+  }, [user])
+  
   return (
     <View style={{top:60}}>
         <Text>Admin</Text>
