@@ -1,14 +1,14 @@
 import React, { useState } from 'react'
-import { useUserLocal } from '../../hooks/useUserLocal';
-import { SaveUserLocalUseCase } from '../../../Domain/useCases/userLocal/SaveUserLocal';
-import { RegisterAuthUseCase } from '../../../Domain/useCases/auth/RegisterAuth';
+import { useUserLocal } from '../../../hooks/useUserLocal';
+import { SaveUserLocalUseCase } from '../../../../Domain/useCases/userLocal/SaveUserLocal';
+import { RegisterAuthUseCase } from '../../../../Domain/useCases/auth/RegisterAuth';
 
-const RegisterViewModel = () => {
+const RegisterViewModel = (rol:string) => {
   const [errorMessage, setErrorMessage] = useState('');
     const [values, setValues] = useState({
         email: '',
-        rol: 'CLIENT',
         password: '',
+        rol: rol,
         confirmPassword: '',
     });
     const [loading, setLoading] = useState(false)
@@ -43,11 +43,11 @@ const RegisterViewModel = () => {
             setErrorMessage('Ingresa la contraseña');
             return false;
         }
-        if (values.rol === '') {
-          setErrorMessage('Seleccione un ROL');
-          return false;
-      }
         if (values.confirmPassword === '') {
+            setErrorMessage('Ingresa la confirmacion de la contraseña');
+            return false;
+        }
+        if (values.rol === '') {
             setErrorMessage('Ingresa la confirmacion de la contraseña');
             return false;
         }

@@ -5,7 +5,7 @@ import { MainStackNavigator } from './src/Presentation/navigator/MainStackNaviga
 import { View} from 'react-native';
 import { DriverStackNavigator } from './src/Presentation/navigator/DriverStackNavigator';
 import { SellerStackNavigator } from './src/Presentation/navigator/SellerStackNavigator';
-import { UserTypeSelectionScreen } from './src/Presentation/views/auth/UserSelect';
+import { UserTypeSelectionScreen } from './src/Presentation/views/auth/userSelect/UserSelect';
 
 type UserType = 'DRIVER' | 'SELLER' | null;
 

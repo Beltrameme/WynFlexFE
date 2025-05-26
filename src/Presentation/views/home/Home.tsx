@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useNavigation } from '@react-navigation/native'
 import { Image, View, Text, TextInput, ToastAndroid, StyleSheet, TouchableOpacity } from 'react-native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { RootStackParamList } from '../../navigator/MainStackNavigator';
+import { RootStackParamList } from '../../navigator/DriverStackNavigator';
 import { RoundedButton } from '../../components/RoundedButton';
 import { StackScreenProps } from '@react-navigation/stack';
 import useViewModel from './ViewModel';
@@ -11,7 +11,7 @@ import { CustomTextInput } from '../../components/CustomTextInput';
 interface Props extends StackScreenProps<RootStackParamList, 'HomeScreen'>{};
 
 export const HomeScreen = ({navigation, route}: Props) => {
-
+    const {rol} = route.params
     const { email, password, errorMessage, onChange, login, user, removeUserSession } = useViewModel();
 
     useEffect(() => {
@@ -64,7 +64,7 @@ export const HomeScreen = ({navigation, route}: Props) => {
                 <TouchableOpacity onPress={ login }>
             <Text>entrada</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={ () => navigation.navigate('RegisterScreen') }>
+        <TouchableOpacity onPress={ () => navigation.navigate('RegisterScreen', {rol:rol}) }>
             <Text>Registrate</Text>
         </TouchableOpacity>
 

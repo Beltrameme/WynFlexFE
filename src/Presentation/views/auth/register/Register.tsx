@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from 'react'
 import { ActivityIndicator, ScrollView, Text, ToastAndroid, View } from 'react-native'
-import { CustomTextInput } from '../../components/CustomTextInput'
+import { CustomTextInput } from '../../../components/CustomTextInput'
 import useViewModel from './ViewModel';
 import { StackScreenProps } from '@react-navigation/stack';
-import { RootStackParamList } from '../../navigator/MainStackNavigator';
-import { RoundedButton } from '../../components/RoundedButton';
+import { RootStackParamList } from '../../../navigator/DriverStackNavigator';
+import { RoundedButton } from '../../../components/RoundedButton';
 import { Picker } from '@react-native-picker/picker';
 
 
 interface Props extends StackScreenProps<RootStackParamList, 'RegisterScreen'>{};
 
 export const RegisterScreen = ({navigation, route}: Props) => {
-
-  const { email, password, confirmPassword, rol, errorMessage, onChange, register, user, loading } = useViewModel();
+  const {rol} = route.params
+  const { email, password, confirmPassword, errorMessage, onChange, register, user, loading } = useViewModel(rol);
   
   useEffect(() => {
     if (errorMessage != '') {
@@ -23,10 +23,10 @@ export const RegisterScreen = ({navigation, route}: Props) => {
 
   useEffect(() => {      
           if (user?.id !== null && user?.id !== undefined) {
-              navigation.replace('HomeScreen');
+              navigation.replace('HomeScreen',{rol:rol});
           }
       }, [user])
-
+      
   return (
     <View >
           
@@ -41,7 +41,7 @@ export const RegisterScreen = ({navigation, route}: Props) => {
             <CustomTextInput 
               placeholder='Correo electronico'
               keyboardType='email-address'
-              image={ require('../../../../assets/email.png') }
+              image={ require('../../../../../assets/email.png') }
               property='email'
               onChangeText={ onChange }
               value={ email }
@@ -52,7 +52,7 @@ export const RegisterScreen = ({navigation, route}: Props) => {
             <CustomTextInput 
               placeholder='Contraseña'
               keyboardType='default'
-              image={ require('../../../../assets/password.png') }
+              image={ require('../../../../../assets/password.png') }
               property='password'
               onChangeText={ onChange }
               value={ password }
@@ -62,7 +62,7 @@ export const RegisterScreen = ({navigation, route}: Props) => {
             <CustomTextInput 
               placeholder='Confirmar Contraseña'
               keyboardType='default'
-              image={ require('../../../../assets/confirm_password.png') }
+              image={ require('../../../../../assets/confirm_password.png') }
               property='confirmPassword'
               onChangeText={ onChange }
               value={ confirmPassword }
@@ -70,26 +70,25 @@ export const RegisterScreen = ({navigation, route}: Props) => {
               />
 
 
-              {/* <Picker
-                selectedValue={rol}
-                onValueChange={(itemValue) => onChange('rol', itemValue)}
-                dropdownIconColor='gray'
-                mode='dropdown'
-              >
-                <Picker.Item label="SELECCIONE" value="" />
-                <Picker.Item label="CLIENTE" value="CLIENTE" />
-                <Picker.Item label="DRIVER" value="DRIVER" />
-              </Picker> */}
+            <CustomTextInput
+              placeholder='ROL'
+              keyboardType='default'
+              image={ require('../../../../../assets/confirm_password.png') }
+              property='rol'
+              onChangeText={ onChange }
+              value= {rol}
+              readOnly = {true}
+            />
 
             <View style={{ marginTop: 30 }}>
                 
-                <RoundedButton text='Log In With Google' onPress={ () => {}} foto={require('../../../../assets/google.png')}/>
+                <RoundedButton text='Log In With Google' onPress={ () => {}} foto={require('../../../../../assets/google.png')}/>
 
             </View>
 
             <View style={{ marginTop: 30 }}>
                 
-                <RoundedButton text='Log In With Mercadolibre' onPress={ () => {}} foto={require('../../../../assets/mercadolibre.png')}/>
+                <RoundedButton text='Log In With Mercadolibre' onPress={ () => {}} foto={require('../../../../../assets/mercadolibre.png')}/>
 
             </View>
             <View style={{ marginTop: 30 }}>
