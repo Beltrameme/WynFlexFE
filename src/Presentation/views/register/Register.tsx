@@ -70,7 +70,7 @@ export const RegisterScreen = ({navigation, route}: Props) => {
               />
 
 
-              <Picker
+              {/* <Picker
                 selectedValue={rol}
                 onValueChange={(itemValue) => onChange('rol', itemValue)}
                 dropdownIconColor='gray'
@@ -79,10 +79,19 @@ export const RegisterScreen = ({navigation, route}: Props) => {
                 <Picker.Item label="SELECCIONE" value="" />
                 <Picker.Item label="CLIENTE" value="CLIENTE" />
                 <Picker.Item label="DRIVER" value="DRIVER" />
-                <Picker.Item label="ADMIN" value="ADMIN" />
-              </Picker>
+              </Picker> */}
 
+            <View style={{ marginTop: 30 }}>
+                
+                <RoundedButton text='Log In With Google' onPress={ () => {}} foto={require('../../../../assets/google.png')}/>
 
+            </View>
+
+            <View style={{ marginTop: 30 }}>
+                
+                <RoundedButton text='Log In With Mercadolibre' onPress={ () => {}} foto={require('../../../../assets/mercadolibre.png')}/>
+
+            </View>
             <View style={{ marginTop: 30 }}>
                 
                 <RoundedButton text='CONFIRMAR' onPress={ () => register()} />

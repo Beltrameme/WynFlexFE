@@ -7,6 +7,7 @@ import { DriverScreen } from '../views/driver/Driver';
 import { ClientScreen } from '../views/client/Client';
 import { AdminScreen } from '../views/admin/Admin';
 import { ErrorScreen } from '../views/home/Error';
+import { RecuperarScreen } from '../views/recuperar/Recuperar';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -17,6 +18,7 @@ export type RootStackParamList = {
     ClientScreen: undefined,
     AdminScreen: undefined,
     ErrorScreen: undefined,
+    RecuperarScreen: undefined
 }
 
 export const MainStackNavigator = () => {
@@ -33,6 +35,14 @@ export const MainStackNavigator = () => {
          options={{
           headerShown: true,
           title: 'Nuevo Usuario'
+         }} 
+         />
+         <Stack.Screen 
+         name="RecuperarScreen" 
+         component={RecuperarScreen}
+         options={{
+          headerShown: true,
+          title: 'Recuperar Contraseña'
          }} 
          />
          <Stack.Screen

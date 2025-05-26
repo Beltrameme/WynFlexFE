@@ -7,7 +7,7 @@ const RegisterViewModel = () => {
   const [errorMessage, setErrorMessage] = useState('');
     const [values, setValues] = useState({
         email: '',
-        rol: '',
+        rol: 'CLIENT',
         password: '',
         confirmPassword: '',
     });

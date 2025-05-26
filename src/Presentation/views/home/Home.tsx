@@ -60,8 +60,16 @@ export const HomeScreen = ({navigation, route}: Props) => {
                 secureTextEntry={ true }
             />
             <RoundedButton text='LOGIN' onPress={ () => login()} />
+
+                <TouchableOpacity onPress={ login }>
+            <Text>entrada</Text>
+        </TouchableOpacity>
         <TouchableOpacity onPress={ () => navigation.navigate('RegisterScreen') }>
             <Text>Registrate</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity onPress={ () => navigation.navigate('RecuperarScreen')}>
+            <Text>Recuperar Contraseña</Text>
         </TouchableOpacity>
 
         <View style={{top:100}}>
