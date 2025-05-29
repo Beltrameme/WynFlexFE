@@ -13,13 +13,32 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.beltrameme.wynflexfe",
+      "config":{
+        "googleMapsApiKey":"AIzaSyDU6WdF2MDI-zRym8Um4PctN5U_tjBmoeM"
+      },
+      "infoPlist": {
+        "UIBackgroundModes": [
+          "location",
+          "fetch"
+      ]
+      }
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.beltrameme.wynflexfe",
+      "config":{
+        "googleMaps":{
+          "apiKey": "AIzaSyDU6WdF2MDI-zRym8Um4PctN5U_tjBmoeM"
+        }
+      },
+      "permissions": [
+        "ACCESS_BACKGROUND_LOCATION"
+      ]
     },
     "web": {
       "favicon": "./assets/favicon.png"

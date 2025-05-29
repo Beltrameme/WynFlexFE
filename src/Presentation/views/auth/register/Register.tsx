@@ -80,6 +80,20 @@ export const RegisterScreen = ({navigation, route}: Props) => {
               readOnly = {true}
             />
 
+            <View>
+              {rol==='DRIVER' &&
+              <CustomTextInput
+              placeholder='Confirmar pirulo'
+              keyboardType='default'
+              image={ require('../../../../../assets/confirm_password.png') }
+              property='confirmPassword'
+              onChangeText={ onChange }
+              value={ confirmPassword }
+              secureTextEntry={ true }
+              />
+              }
+            </View>
+
             <View style={{ marginTop: 30 }}>
                 
                 <RoundedButton text='Log In With Google' onPress={ () => {}} foto={require('../../../../../assets/google.png')}/>
